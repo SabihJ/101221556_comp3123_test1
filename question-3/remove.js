@@ -1,4 +1,5 @@
 var fs = require('fs')
+var path = require('path')
 
 if (fs.existsSync('Log')){
 
@@ -9,12 +10,26 @@ if (fs.existsSync('Log')){
         });
     });
 
+    //remove files
+    fs.readdir('Log', (err, files) => {
+        if (err) throw err;
+      
+        for (const file of files) {
+            console.log('Removing file ' + file)
+          fs.unlink(path.join('Log', file), err => {
+            if (err) throw err;
+          });
+        }
+      });
+
+    
+    //remove dir
     fs.rmdir('Log', { recursive: true }, (err) => {
         if (err) {
             throw err;
         }
     
-        console.log(`${dir} is deleted!`);
+        console.log(`Log is deleted!`);
     });
 }
 else
