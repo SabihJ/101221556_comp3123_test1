@@ -11,7 +11,7 @@ try {
     for (let i = 1; i <11; i++){
         fs.writeFile('test' + i + '.txt', 'this is file ' + i, (err)=> {})
     }
-    fs.readdir(__dirname+'/Log', (err, files) => {
+    fs.readdir('.', (err, files) => {
         files.forEach(file => {
           console.log(file);
         });
