@@ -1,0 +1,17 @@
+<script>
+    function lowerCaseWords(mixed_array){
+    return new Promise((resolve, reject) =>{
+        if (!Array.isArray(mixed_array))
+            reject('Input is not an array!')
+        var new_array = []
+        for (var i = 0; i < mixed_array.length; i++) {
+            if (typeof mixed_array[i] == 'string'){
+                new_array.push(mixed_array[i])
+            }
+        }
+        resolve(new_array)
+    })
+}
+
+lowerCaseWords("hi").then((result) => { console.log(result)}, (err) => {console.log(err)})
+</script>

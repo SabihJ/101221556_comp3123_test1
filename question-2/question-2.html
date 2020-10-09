@@ -1,0 +1,22 @@
+<script>
+    async function resolvePromise(){
+        return await new Promise ((resolve, reject) => {
+            setTimeout(() => { 
+                resolve({'message' : 'delayed success!'})
+            }, 500)
+        })
+    }
+    async function rejectedPromise(){
+        return await new Promise((resolve, reject) => {
+            setTimeout(() => {
+                try{
+                    throw new Error('error: delayed exception!')
+                } catch (e){
+                    reject({'error' : 'delayed exception!'})
+                }
+            }, 500)
+        })
+    }
+    resolvePromise().then((result) => {console.log(result)}, (err) => {console.log(err)})
+    rejectedPromise().then((result) => {console.log(result)}, (err) => {console.log(err)})
+</script>
